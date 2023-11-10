@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <DropdownMenu onChangeTime={sendMessageToGrafana} />
-      <iframe id={'grafana-iframe'} src={srcIframe} width="100%" height={800}></iframe>
+      <iframe title={'grafana'} id={'grafana-iframe'} src={srcIframe} width="100%" height={800}></iframe>
     </>
   );
 }
