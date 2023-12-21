@@ -6,7 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [ts, setTs] = useState('3h');
   const [panelId, setPanelId] = useState('1');
+  // Url iframe, myd-solo è la route aggiunta nel mio grafana per l'iframe modificato
   const srcIframe = 'http://localhost:3000/myd-solo/c10d6588-f085-44d3-b9e6-9cf4043716ff/new-dashboard?orgId=1&var-ts=3h&panelId=1';
+  //useEffect che usa la postMessage per notificare a grafana il cambio della variabile ts
   useEffect(() => {
     const sendMessageToGrafana = () => {
       const message = {
@@ -19,6 +21,7 @@ function App() {
     sendMessageToGrafana();
   }, [ts]);
 
+  //useEffect che usa la postMessage per notificare a grafana il cambio del panelId
   useEffect(() => {
     const sendMessageToGrafana = () => {
       const message = { panelId: panelId };
@@ -28,6 +31,8 @@ function App() {
     sendMessageToGrafana();
   }, [panelId]);
 
+
+  //Componente minimal per testare il funzionamento dell'iframe e l'aggioramento delle variabili
   return (
     <>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
